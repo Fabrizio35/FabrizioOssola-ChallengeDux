@@ -11,7 +11,7 @@ import 'primereact/resources/primereact.min.css'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 
-export default function UserTable({ sector }: { sector: string }) {
+const UserTable = ({ sector }: { sector: string }) => {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [totalRecords, setTotalRecords] = useState<number>(0)
@@ -33,10 +33,17 @@ export default function UserTable({ sector }: { sector: string }) {
       .finally(() => setLoading(false))
   }, [sector, rows, page])
 
-  if (loading) return <ProgressSpinner />
+  if (loading)
+    return (
+      <ProgressSpinner
+        aria-label="Loading"
+        strokeWidth="8"
+        style={{ width: '35px', height: '35px' }}
+      />
+    )
 
   return (
-    <div>
+    <>
       <DataTable value={users} paginator={false} className="p-datatable-sm">
         <Column field="id" header="Id" sortable />
         <Column field="usuario" header="Usuario" sortable />
@@ -53,8 +60,10 @@ export default function UserTable({ sector }: { sector: string }) {
           setRows(e.rows)
         }}
         template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-        className="justify-content-end mt-3"
+        className="justify-content-end mt-3 mx-auto w-fit"
       />
-    </div>
+    </>
   )
 }
+
+export default UserTable
