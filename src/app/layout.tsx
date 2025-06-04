@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { Toaster } from 'react-hot-toast'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
+import MyToaster from '@/components/MyToaster'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,13 +20,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.className} p-0 m-0`}>
-        <Toaster
-          position="bottom-center"
-          toastOptions={{
-            duration: 3000,
-            style: { backgroundColor: '#0763E7', color: 'white' },
-          }}
-        />
+        <MyToaster />
         <Navbar />
         <Sidebar />
         {children}
