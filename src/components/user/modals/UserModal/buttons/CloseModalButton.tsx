@@ -17,6 +17,8 @@ const CloseModalButton = ({
         <Button
           type="button"
           icon="pi pi-minus"
+          tooltip="Cerrar"
+          tooltipOptions={{ position: 'bottom', className: 'text-xs' }}
           className="p-button-text text-white"
           style={{ background: 'transparent', border: 'none' }}
           onClick={onHide}
