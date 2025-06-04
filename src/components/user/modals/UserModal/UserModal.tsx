@@ -117,7 +117,6 @@ export default function UserModal({
       <ModalHeader
         handleDelete={handleDelete}
         isEdit={isEdit}
-        isSubmitting={isSubmitting}
         onHide={onHide}
       />
 

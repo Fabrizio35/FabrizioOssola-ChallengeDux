@@ -5,15 +5,9 @@ interface ModalHeaderProps {
   isEdit: boolean
   onHide: () => void
   handleDelete: () => void
-  isSubmitting: boolean
 }
 
-const ModalHeader = ({
-  handleDelete,
-  isEdit,
-  isSubmitting,
-  onHide,
-}: ModalHeaderProps) => {
+const ModalHeader = ({ handleDelete, isEdit, onHide }: ModalHeaderProps) => {
   return (
     <div
       className="flex align-items-center justify-content-between px-4"
@@ -24,12 +18,7 @@ const ModalHeader = ({
       </h2>
 
       <div className="flex align-items-center">
-        {isEdit && (
-          <DeleteUserButton
-            handleDelete={handleDelete}
-            isSubmitting={isSubmitting}
-          />
-        )}
+        {isEdit && <DeleteUserButton handleDelete={handleDelete} />}
         <CloseModalButton version="icon" onHide={onHide} />
       </div>
     </div>
