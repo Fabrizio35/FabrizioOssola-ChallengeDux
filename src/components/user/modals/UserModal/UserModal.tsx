@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { Dialog } from 'primereact/dialog'
-import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { Dropdown } from 'primereact/dropdown'
 import { useForm } from 'react-hook-form'
@@ -9,8 +8,11 @@ import { userSchema, UserFormType } from '@/schemas/user.schema'
 import type { User } from '@/types'
 import { createUser, updateUser, deleteUser } from '@/services/userService'
 import { ESTADOS, SECTORES } from './modalData'
-import CloseModalButton from './CloseModalButton'
+import CloseModalButton from './buttons/CloseModalButton'
+import FormField from './FormField'
 import toast from 'react-hot-toast'
+import ModalHeader from './ModalHeader'
+import SubmitButton from './buttons/SubmitButton'
 
 interface UserModalProps {
   visible: boolean
@@ -112,56 +114,29 @@ export default function UserModal({
       closable={false}
       contentStyle={{ padding: 0, margin: 0, width: '1100px' }}
     >
-      <div
-        className="flex align-items-center justify-content-between px-4"
-        style={{ backgroundColor: '#0763E7' }}
-      >
-        <h2 className="text-xl font-bold text-white">
-          {isEdit ? 'Editar usuario' : 'Nuevo usuario'}
-        </h2>
-
-        <div className="flex align-items-center">
-          {isEdit && (
-            <Button
-              type="button"
-              icon="pi pi-trash"
-              severity="danger"
-              className="p-button-text text-white"
-              style={{ background: 'transparent', border: 'none' }}
-              onClick={handleDelete}
-              disabled={isSubmitting}
-            />
-          )}
-          <CloseModalButton version="icon" onHide={onHide} />
-        </div>
-      </div>
+      <ModalHeader
+        handleDelete={handleDelete}
+        isEdit={isEdit}
+        isSubmitting={isSubmitting}
+        onHide={onHide}
+      />
 
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="p-fluid flex flex-column gap-5 p-4"
       >
         {/* Usuario */}
-        <div className="p-field">
-          <label htmlFor="usuario" className="font-semibold text-lg">
-            Nombre
-          </label>
+        <FormField label="Nombre" id="usuario" error={errors.usuario?.message}>
           <InputText
             id="usuario"
             {...register('usuario')}
-            className="mt-2"
             autoComplete="off"
             placeholder="Ingrese el nombre de usuario"
           />
-          {errors.usuario && (
-            <small className="p-error">{errors.usuario.message}</small>
-          )}
-        </div>
+        </FormField>
 
         {/* Estado */}
-        <div className="p-field">
-          <label htmlFor="estado" className="font-semibold text-lg">
-            Estado
-          </label>
+        <FormField label="Estado" id="estado" error={errors.estado?.message}>
           <Dropdown
             id="estado"
             options={ESTADOS}
@@ -175,16 +150,10 @@ export default function UserModal({
             className="mt-2"
             placeholder="Seleccione estado"
           />
-          {errors.estado && (
-            <small className="p-error">{errors.estado.message}</small>
-          )}
-        </div>
+        </FormField>
 
         {/* Sector */}
-        <div className="p-field">
-          <label htmlFor="sector" className="font-semibold text-lg">
-            Sector
-          </label>
+        <FormField label="Sector" id="sector" error={errors.sector?.message}>
           <Dropdown
             id="sector"
             options={SECTORES}
@@ -198,20 +167,14 @@ export default function UserModal({
             className="mt-2"
             placeholder="Seleccione sector"
           />
-          {errors.sector && (
-            <small className="p-error">{errors.sector.message}</small>
-          )}
-        </div>
+        </FormField>
 
         {/* Botones */}
         <div className="flex align-items-center gap-2 mx-auto">
-          <Button
-            type="submit"
-            label={isEdit ? 'Guardar' : 'Confirmar'}
-            icon="pi pi-check"
-            className="w-10rem"
-            loading={isSubmitting}
-            disabled={isSubmitting || !isValid}
+          <SubmitButton
+            isEdit={isEdit}
+            isSubmitting={isSubmitting}
+            isValid={isValid}
           />
           <CloseModalButton
             version="text"
