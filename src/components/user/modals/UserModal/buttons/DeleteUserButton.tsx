@@ -3,13 +3,9 @@ import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog'
 
 interface DeleteUserButtonProps {
   handleDelete: () => void
-  isSubmitting: boolean
 }
 
-const DeleteUserButton = ({
-  handleDelete,
-  isSubmitting,
-}: DeleteUserButtonProps) => {
+const DeleteUserButton = ({ handleDelete }: DeleteUserButtonProps) => {
   const HeaderConfirm = () => (
     <h3
       className="text-xl font-bold text-white p-3 m-0 mb-5"
@@ -49,7 +45,6 @@ const DeleteUserButton = ({
         className="p-button-text text-white"
         style={{ background: 'transparent', border: 'none' }}
         onClick={showConfirm}
-        disabled={isSubmitting}
       />
       <ConfirmDialog />
     </>
