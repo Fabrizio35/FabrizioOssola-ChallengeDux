@@ -1,0 +1,39 @@
+import { Button } from 'primereact/button'
+
+interface CloseModalButtonProps {
+  version: 'icon' | 'text'
+  onHide: () => void
+  isSubmitting?: boolean
+}
+
+const CloseModalButton = ({
+  version,
+  onHide,
+  isSubmitting,
+}: CloseModalButtonProps) => {
+  return (
+    <>
+      {version === 'icon' ? (
+        <Button
+          type="button"
+          icon="pi pi-minus"
+          className="p-button-text text-white"
+          style={{ background: 'transparent', border: 'none' }}
+          onClick={onHide}
+          aria-label="Cerrar"
+        />
+      ) : (
+        <Button
+          type="button"
+          label="Cancelar"
+          className="p-button-text border-1 w-10rem"
+          style={{ borderColor: '#3B82F6' }}
+          onClick={onHide}
+          disabled={isSubmitting}
+        />
+      )}
+    </>
+  )
+}
+
+export default CloseModalButton

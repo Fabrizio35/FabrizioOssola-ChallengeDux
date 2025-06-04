@@ -11,11 +11,11 @@ const StatusSelect = ({ setStatus, status }: StatusSelectProps) => {
       value={status}
       optionLabel="label"
       optionValue="value"
-      placeholder="Estado"
+      placeholder="Seleccionar estado"
       className="w-full"
       onChange={(e) => setStatus(e.value)}
       options={[
-        { label: 'Todos', value: '' },
+        { label: 'Todos', value: 'TODOS' },
         { label: 'Activo', value: 'ACTIVO' },
         { label: 'Inactivo', value: 'INACTIVO' },
       ]}

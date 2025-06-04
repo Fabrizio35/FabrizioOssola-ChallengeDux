@@ -12,7 +12,7 @@ const SearchInput = ({ search, setSearch }: SearchInputProps) => {
       <InputText
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Buscar por nombre"
+        placeholder="Buscar"
         className="pl-5 w-full"
       />
     </span>
