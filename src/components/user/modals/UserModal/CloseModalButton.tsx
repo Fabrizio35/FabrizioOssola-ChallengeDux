@@ -26,6 +26,7 @@ const CloseModalButton = ({
         <Button
           type="button"
           label="Cancelar"
+          aria-label="Cerrar"
           className="p-button-text border-1 w-10rem"
           style={{ borderColor: '#3B82F6' }}
           onClick={onHide}

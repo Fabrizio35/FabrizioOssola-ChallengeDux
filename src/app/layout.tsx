@@ -3,10 +3,6 @@ import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
-import 'primereact/resources/themes/lara-light-blue/theme.css'
-import 'primeflex/primeflex.css'
-import 'primeicons/primeicons.css'
-import 'primereact/resources/primereact.min.css'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })

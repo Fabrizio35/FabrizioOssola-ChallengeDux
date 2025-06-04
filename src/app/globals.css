@@ -1,3 +1,8 @@
+@import 'primereact/resources/themes/lara-light-blue/theme.css';
+@import 'primeflex/primeflex.css';
+@import 'primeicons/primeicons.css';
+@import 'primereact/resources/primereact.min.css';
+
 .p-dialog-header {
   padding: 0 !important;
   min-height: 0 !important;
